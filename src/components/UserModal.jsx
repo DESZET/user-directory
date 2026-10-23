@@ -1,18 +1,13 @@
 import { useEffect } from 'react'
 
-/**
- * UserModal — full detail view for a selected user.
- * Shows contact info, address, and company details.
- * Closes on overlay click or Escape key.
- */
+// Modal detail user, tutup pake tombol X atau Escape
 export default function UserModal({ user, onClose }) {
-  // Close on Escape key
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === 'Escape') onClose()
     }
     document.addEventListener('keydown', handleEsc)
-    // Lock body scroll while modal is open
+    // lock scroll body pas modal kebuka
     document.body.style.overflow = 'hidden'
     return () => {
       document.removeEventListener('keydown', handleEsc)
@@ -38,7 +33,6 @@ export default function UserModal({ user, onClose }) {
         className="w-full max-w-md animate-slide-up border-3 border-black bg-white shadow-brutal-modal"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
         <div className="flex items-center gap-4 border-b-3 border-black bg-accent px-6 py-6 text-white">
           <div className="flex h-16 w-16 shrink-0 items-center justify-center border-3 border-black bg-white font-mono text-2xl font-bold text-black">
             {initials}
@@ -56,16 +50,13 @@ export default function UserModal({ user, onClose }) {
           </button>
         </div>
 
-        {/* Body */}
         <div className="max-h-[50vh] overflow-y-auto p-6">
-          {/* Contact */}
           <Section title="Contact">
             <Field k="email" v={user.email} />
             <Field k="phone" v={user.phone} />
             <Field k="website" v={user.website} />
           </Section>
 
-          {/* Address */}
           <Section title="Address">
             <Field k="street" v={`${user.address.street}, ${user.address.suite}`} />
             <Field k="city" v={user.address.city} />
@@ -73,7 +64,6 @@ export default function UserModal({ user, onClose }) {
             <Field k="geo" v={`${user.address.geo.lat}, ${user.address.geo.lng}`} />
           </Section>
 
-          {/* Company */}
           <Section title="Company" last>
             <div className="border-3 border-black bg-cream p-4 shadow-brutal-sm">
               <div className="mb-1.5 text-lg font-bold">{user.company.name}</div>

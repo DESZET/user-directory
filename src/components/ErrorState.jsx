@@ -1,10 +1,7 @@
-/**
- * ErrorState — friendly error message with a retry button.
- */
+// Tampilan error pake tombol retry
 export default function ErrorState({ message, onRetry }) {
   return (
     <div className="flex flex-col items-center justify-center gap-5 border-3 border-black bg-white py-20 text-center shadow-brutal">
-      {/* Big error icon */}
       <div className="flex h-20 w-20 items-center justify-center border-3 border-black bg-strip-3 text-4xl font-bold text-white shadow-brutal-sm">
         !
       </div>

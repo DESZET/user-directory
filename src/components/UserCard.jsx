@@ -1,11 +1,4 @@
-/**
- * UserCard — single user in the grid.
- * Color strip at top, avatar, name, email, company + city.
- * Hover lifts the card with an accent-coloured hard shadow.
- */
-
-// Nine distinct strip colours — assigned by index so the same user
-// always gets the same colour.
+// Warna strip dan avatar tiap card
 const STRIP_COLORS = [
   'bg-strip-1',
   'bg-strip-2',
@@ -18,7 +11,6 @@ const STRIP_COLORS = [
   'bg-strip-9',
 ]
 
-// Avatar background colours (paired with strip for contrast).
 const AVATAR_COLORS = [
   'bg-strip-1 text-white',
   'bg-strip-2 text-black',
@@ -41,11 +33,9 @@ export default function UserCard({ user, index, onClick }) {
       onClick={() => onClick(user)}
       className="cursor-pointer overflow-hidden border-3 border-black bg-white shadow-brutal transition-all duration-150 hover:-translate-x-[3px] hover:-translate-y-[3px] hover:shadow-brutal-accent active:translate-x-[5px] active:translate-y-[5px] active:shadow-none"
     >
-      {/* Color strip */}
       <div className={`h-2 border-b-3 border-black ${strip}`} />
 
       <div className="p-5">
-        {/* Avatar + name */}
         <div className="mb-4 flex items-center gap-3.5">
           <div
             className={`flex h-[52px] w-[52px] shrink-0 items-center justify-center border-3 border-black font-mono text-lg font-bold ${avatar}`}
@@ -62,12 +52,10 @@ export default function UserCard({ user, index, onClick }) {
           </div>
         </div>
 
-        {/* Email */}
         <div className="mb-4 border-2 border-black bg-[#F8F8F8] px-3 py-2 text-sm font-medium text-gray-700">
           {user.email}
         </div>
 
-        {/* Company + city */}
         <div className="flex items-center justify-between gap-2">
           <span className="truncate text-sm font-semibold">
             {user.company.name}
@@ -81,6 +69,7 @@ export default function UserCard({ user, index, onClick }) {
   )
 }
 
+// ambil inisial dari nama
 function getInitials(name) {
   return name
     .split(' ')

@@ -9,21 +9,17 @@ import ErrorState from './components/ErrorState'
 import EmptyState from './components/EmptyState'
 
 export default function App() {
-  // --- Data layer ---
+  // ambil data user dari hook
   const { users, loading, error, refetch } = useUsers()
 
-  // --- UI state ---
+  // state UI
   const [query, setQuery] = useState('')
   const [selectedUser, setSelectedUser] = useState(null)
 
-  // --- Search performance ---
-  // useDeferredValue lets React keep the input responsive even if
-  // filtering is expensive. React renders the input at high priority
-  // (immediate) and the filtered list at low priority (deferred).
-  // For 10k+ rows this prevents the "typing lag" problem.
+  // useDeferredValue biar input tetap responsif walau data banyak
   const deferredQuery = useDeferredValue(query)
 
-  // --- Filtering (memoised so we only recompute when query or users change) ---
+  // filter user berdasarkan nama atau email
   const filteredUsers = useMemo(() => {
     const q = deferredQuery.trim().toLowerCase()
     if (!q) return users
@@ -34,7 +30,6 @@ export default function App() {
     )
   }, [users, deferredQuery])
 
-  // --- Modal handlers ---
   const handleSelectUser = useCallback((user) => {
     setSelectedUser(user)
   }, [])
@@ -43,13 +38,10 @@ export default function App() {
     setSelectedUser(null)
   }, [])
 
-  // --- Render ---
   return (
     <div className="mx-auto max-w-7xl px-6 py-9">
-      {/* Header */}
       <Header count={users.length} />
 
-      {/* Search */}
       {!loading && !error && (
         <SearchBar
           query={query}
@@ -59,7 +51,6 @@ export default function App() {
         />
       )}
 
-      {/* Content area */}
       {loading && <LoadingState />}
 
       {error && !loading && <ErrorState message={error} onRetry={refetch} />}
@@ -82,14 +73,12 @@ export default function App() {
         </div>
       )}
 
-      {/* Modal */}
       {selectedUser && (
         <UserModal user={selectedUser} onClose={handleCloseModal} />
       )}
 
-      {/* Footer */}
       <footer className="mt-10 border-t-3 border-black pt-4 text-center font-mono text-xs font-bold text-gray-400">
-        USER DIRECTORY · POWERED BY DESTA
+        USER DIRECTORY · NEO-BRUTALISM · POWERED BY JSONPLACEHOLDER API
       </footer>
     </div>
   )

@@ -1,7 +1,4 @@
-/**
- * SearchBar — thick-bordered search input with neo-brutalism styling.
- * Reports the current query up via onChange.
- */
+// Search bar buat filter user
 export default function SearchBar({ query, onChange, resultCount, totalCount }) {
   return (
     <div className="mb-7">

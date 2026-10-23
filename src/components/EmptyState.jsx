@@ -1,6 +1,4 @@
-/**
- * EmptyState — shown when search returns no results.
- */
+// Pas hasil search kosong
 export default function EmptyState({ query }) {
   return (
     <div className="flex flex-col items-center justify-center gap-4 border-3 border-black bg-white py-20 text-center shadow-brutal">
