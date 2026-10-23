@@ -78,7 +78,7 @@ export default function App() {
       )}
 
       <footer className="mt-10 border-t-3 border-black pt-4 text-center font-mono text-xs font-bold text-gray-400">
-        USER DIRECTORY · NEO-BRUTALISM · POWERED BY JSONPLACEHOLDER API
+        USER DIRECTORY - POWERED BY DESTA
       </footer>
     </div>
   )
