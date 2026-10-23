@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base */
+body {
+  background-color: #FFFDF5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar — brutalism style */
+::-webkit-scrollbar {
+  width: 14px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFDF5;
+  border-left: 3px solid #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #7C3AED;
+  border: 3px solid #000;
+}
+
+/* Selection */
+::selection {
+  background: #7C3AED;
+  color: #FFF;
+}
